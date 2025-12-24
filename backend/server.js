@@ -13,49 +13,31 @@ import bookingsRoutes from "./routes/bookingsRoutes.js";
 
 import multer from "multer";
 import nodemailer from "nodemailer";
-import path from "path";
 
 dotenv.config();
 connectDB();
 
-/* ---------------- DEBUG ENV ---------------- */
-console.log("GMAIL_USER:", process.env.GMAIL_USER ? "SET" : "MISSING");
-console.log("GMAIL_PASS:", process.env.GMAIL_PASS ? "SET" : "MISSING");
-console.log("ADMIN_EMAIL:", process.env.ADMIN_EMAIL);
-
-/* ---------------- EXPRESS APP ---------------- */
 const app = express();
 
-/* ---------------- MIDDLEWARE ---------------- */
+/* MIDDLEWARE */
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
-app.use("/uploads", express.static("uploads"));
 
-/* ---------------- EMAIL SETUP ---------------- */
+/* EMAIL */
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS, // MUST be App Password
+    pass: process.env.GMAIL_PASS,
   },
 });
 
-// Verify email on startup
-transporter.verify((error) => {
-  if (error) {
-    console.log("❌ GMAIL ERROR:", error.message);
-  } else {
-    console.log("✅ GMAIL READY!");
-  }
-});
-
-/* ---------------- GLOBAL APP CONFIG ---------------- */
 app.set("transporter", transporter);
-app.set("ADMIN_EMAIL", process.env.ADMIN_EMAIL || "admin@flowerdecor.com");
+app.set("ADMIN_EMAIL", process.env.ADMIN_EMAIL);
 
-/* ---------------- FILE UPLOAD ---------------- */
+/* UPLOAD */
 const storage = multer.diskStorage({
-  destination: "uploads/",
+  destination: "/tmp",
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
   },
@@ -67,12 +49,7 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
   res.json({ filename: req.file.filename });
 });
 
-/* ---------------- ROOT ---------------- */
-app.get("/", (req, res) => {
-  res.send("API is running 🚀");
-});
-
-/* ---------------- ROUTES ---------------- */
+/* ROUTES */
 app.use("/api/services", serviceRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/admin", adminRoutes);
@@ -81,7 +58,10 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/delete", deleteRoutes);
 app.use("/api/bookings", bookingsRoutes);
 
-/* ---------------- START SERVER ---------------- */
-app.listen(5000, () => {
-  console.log("Server running on port 5000 ✅");
+/* ROOT */
+app.get("/", (req, res) => {
+  res.send("API is running on Vercel 🚀");
 });
+
+/* ✅ EXPORT (NO app.listen) */
+export default app;
