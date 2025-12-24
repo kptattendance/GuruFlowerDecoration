@@ -1,5 +1,5 @@
 import "./Events.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -43,7 +43,7 @@ export default function Events() {
 
       setServices(eventServices);
     } catch (error) {
-      console.log("Using static data");
+      console.log("Using static data", error);
       fetchServicesFallback();
     } finally {
       setLoading(false);
@@ -56,7 +56,7 @@ export default function Events() {
       const data = await res.json();
       setServices(data.filter((service) => service.availability));
     } catch (error) {
-      console.log("No data available");
+      console.log("No data available", error);
     }
   };
 
