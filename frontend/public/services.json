@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "1",
+    "title": "Birthday Balloon Wonderland",
+    "description": "Vibrant helium balloons, arches and backdrops",
+    "price": 4999,
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400",
+    "category": "Birthday",
+    "city": "Delhi NCR"
+  },
+  {
+    "_id": "2",
+    "title": "Baby Shower Pastel Decor",
+    "description": "Elegant pastel balloons, floral arrangements",
+    "price": 7499,
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+    "category": "Baby Shower",
+    "city": "Mumbai"
+  }
+]

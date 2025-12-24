@@ -1,0 +1,347 @@
+/* Footer.css - Updated Mobile Centering */
+* {
+  box-sizing: border-box;
+}
+
+.footer {
+  background: linear-gradient(90deg, #fdecef 0%, #ffffff 50%, #f4efff 100%);
+  border-top: 3px solid #c2185b;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c2185b, transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.footer-main {
+  padding: 3rem 1.5rem;
+}
+.logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;         /* force black */
+  white-space: nowrap;/* prevent breaking */
+}
+.footer-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  gap: 2.5rem;
+}
+
+.footer .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.footer .logo img {
+  width: 48px;
+  height: auto;
+  display: block;
+}
+.footer .logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color:#c2185b;        /* footer is dark */
+  white-space: nowrap;
+  line-height: 1;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.brand-logo:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 4px 8px rgba(194, 24, 91, 0.3));
+}
+
+.brand-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.7rem 0 1.2rem;
+  line-height: 1.6;
+}
+
+/* Interactive Social & Payment Icons */
+.social-row, .payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.social-row i, .payment-icons i {
+  font-size: 1rem;
+  color: #c2185b;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(194, 24, 91, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.social-row i:hover, .payment-icons i:hover {
+  background: linear-gradient(45deg, #c2185b, #e91e63);
+  color: white;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 12px 24px rgba(194, 24, 91, 0.4);
+}
+
+/* Interactive Links */
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #c2185b;
+  position: relative;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c2185b, #e91e63);
+  transition: width 0.3s ease;
+}
+
+.footer-col h4:hover::after {
+  width: 100%;
+}
+
+.footer-col a,
+.footer-col p {
+  font-size: 0.9rem;
+  color: #444;
+  display: block;
+  margin-bottom: 0.8rem;
+  text-decoration: none;
+  line-height: 1.4;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-col a:hover,
+.footer-col p:hover {
+  color: #c2185b;
+  transform: translateX(8px);
+  padding-left: 0.5rem;
+}
+
+.footer-col a::before {
+  content: '→';
+  position: absolute;
+  right: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-col a:hover::before {
+  right: 0;
+  opacity: 1;
+}
+
+.footer-col i {
+  margin-right: 0.5rem;
+  color: #c2185b;
+  transition: transform 0.3s ease;
+}
+
+.footer-col a:hover i {
+  transform: scale(1.2);
+}
+
+/* Map & Hours */
+.map-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.map-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* Scroll to Top */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #c2185b, #e91e63);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(194, 24, 91, 0.4);
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  transform: scale(1.15) rotate(360deg);
+}
+
+/* ✅ PERFECT MOBILE CENTERING */
+@media (max-width: 768px) {
+  .footer-main {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center; /* Center all text */
+  }
+  
+  /* Center brand section */
+  .brand-col {
+    text-align: center;
+  }
+  
+  .brand-logo {
+    font-size: 1.8rem;
+    margin: 0 auto;
+  }
+  
+  .brand-desc {
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Center social icons */
+  .social-row {
+    justify-content: center;
+  }
+  
+  /* ✅ CENTER ALL LINK SECTIONS */
+  .footer-col {
+    text-align: center;
+  }
+  
+  .footer-col h4 {
+    text-align: center;
+    margin: 0 auto 1rem;
+  }
+  
+  .footer-col a,
+  .footer-col p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  /* Remove left slide effect on mobile for centering */
+  .footer-col a:hover,
+  .footer-col p:hover {
+    transform: none;
+    padding-left: 0;
+  }
+  
+  .footer-col a::before {
+    display: none; /* Hide arrow on mobile */
+  }
+  
+  .social-row i {
+    font-size: 1.4rem;
+    padding: 0.6rem;
+  }
+  
+  .map-col {
+    order: -1; /* Map first on mobile */
+  }
+  
+  .scroll-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main {
+    padding: 1.5rem 1rem;
+  }
+  
+  .brand-logo {
+    font-size: 1.6rem;
+  }
+  
+  .map-box {
+    height: 180px;
+  }
+  
+  .footer-col a,
+  .footer-col p {
+    font-size: 0.95rem;
+  }
+}
+
+.active-route {
+  color: #c2185b !important;
+  font-weight: 600 !important;
+  position: relative;
+}
+
+.active-route::after {
+  content: '→';
+  position: absolute;
+  right: -15px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.85rem;
+  background: rgba(194, 24, 91, 0.05);
+}
+
+.footer-bottom p {
+  margin: 0;
+  text-align: center;
+}
