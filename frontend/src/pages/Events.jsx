@@ -35,7 +35,7 @@ export default function Events() {
           _id: event._id,
           name: event.title,
           image: event.image
-            ? `http://localhost:5000/uploads/${event.image}`
+            ? `https://guru-flower-decoration-backend.vercel.app/uploads/${event.image}`
             : getEventImage(event.title),
           available: event.availability,
           price: event.price,
