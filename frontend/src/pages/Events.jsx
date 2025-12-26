@@ -52,7 +52,9 @@ export default function Events() {
 
   const fetchServicesFallback = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/services");
+      const res = await fetch(
+        "https://guru-flower-decoration-backend.vercel.app/api/services/services"
+      );
       const data = await res.json();
       setServices(data.filter((service) => service.availability));
     } catch (error) {
