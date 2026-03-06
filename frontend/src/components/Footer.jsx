@@ -271,7 +271,18 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          © 2025 All Rights Reserved | GP Flower Decoration
+          © 2025 All Rights Reserved |
+          <span className="developer-credit">
+            Developed and Maintained by{" "}
+            <a
+              href="https://www.swasyaha.in/projects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="developer-link"
+            >
+              Swasyaha Solutions
+            </a>
+          </span>
         </motion.p>
       </div>
 
