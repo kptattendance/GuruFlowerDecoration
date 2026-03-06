@@ -275,7 +275,7 @@ export default function Footer() {
           <span className="developer-credit">
             Developed and Maintained by{" "}
             <a
-              href="https://www.swasyaha.in/projects"
+              href="https://www.swasyaha.in"
               target="_blank"
               rel="noopener noreferrer"
               className="developer-link"
